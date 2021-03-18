@@ -51,12 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}		set dt to current date	set fdt to date_time_to_iso(dt)		set body to "---
-tags: 
----
-
-# " &amp; fdt &amp; "
-"	set iaURL to "ia-writer://new?path=" &amp; fdt &amp; ".md&amp;edit=true&amp;text=" &amp; body &amp; ""		open location iaURLend runon date_time_to_iso(dt)	set {year:y, month:m, day:d, hours:h, minutes:min, seconds:s} to dt	set y to text 2 through -1 of ((y + 10000) as text)	set m to text 2 through -1 of ((m + 100) as text)	set d to text 2 through -1 of ((d + 100) as text)	set h to text 2 through -1 of ((h + 100) as text)	set min to text 2 through -1 of ((min + 100) as text)	set s to text 2 through -1 of ((s + 100) as text)	return y &amp; "-" &amp; m &amp; "-" &amp; d &amp; "T" &amp; h &amp; "-" &amp; min &amp; "-" &amp; send date_time_to_iso</string>
+					<string>on run {input, parameters}		set dt to current date	set fdt to date_time_to_iso(dt)	set pathFriendlyFdt to findAndReplaceInText(fdt, ":", "-")		set body to "# " &amp; fdt &amp; ""	set iaURL to "ia-writer://new?path=" &amp; pathFriendlyFdt &amp; ".md&amp;edit=true&amp;text=" &amp; body &amp; ""		open location iaURLend runon date_time_to_iso(dt)	set {year:y, month:m, day:d, hours:h, minutes:min, seconds:s} to dt	set y to text 2 through -1 of ((y + 10000) as text)	set m to text 2 through -1 of ((m + 100) as text)	set d to text 2 through -1 of ((d + 100) as text)	set h to text 2 through -1 of ((h + 100) as text)	set min to text 2 through -1 of ((min + 100) as text)	set s to text 2 through -1 of ((s + 100) as text)	return y &amp; "-" &amp; m &amp; "-" &amp; d &amp; "T" &amp; h &amp; ":" &amp; min &amp; ":" &amp; send date_time_to_isoon findAndReplaceInText(theText, theSearchString, theReplacementString)	set AppleScript's text item delimiters to theSearchString	set theTextItems to every text item of theText	set AppleScript's text item delimiters to theReplacementString	set theText to theTextItems as string	set AppleScript's text item delimiters to ""	return theTextend findAndReplaceInText</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -107,8 +102,6 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
