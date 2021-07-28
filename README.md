@@ -1,15 +1,6 @@
 # Zettelkasten iA Writer Workflow
-This AppleScript service will create a new note with the current date and time
-in ISO 8601 format as its title, and populate it with some basic content:
-
-```md
----
-tags:
----
-
-# YYYY-MM-DDTHH-MM-SS
-
-```
+This AppleScript service will create a new empty note with the current date and time
+in ISO 8601 format as its title.
 
 ## Installation
 [Download this repo as a
